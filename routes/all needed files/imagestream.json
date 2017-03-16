@@ -1,0 +1,15 @@
+{
+  "kind": "ImageStream",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hello2",
+    "namespace": "hello-world",
+    "labels": {
+      "app": "hello2"
+    }
+  },
+  "spec": {},
+  "status": {
+    "dockerImageRepository": null
+  }
+}

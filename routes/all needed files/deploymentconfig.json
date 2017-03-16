@@ -1,0 +1,71 @@
+{
+  "kind": "DeploymentConfig",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hello2",
+    "namespace": "hello-world",
+    "labels": {
+      "app": "hello2"
+    }
+  },
+  "spec": {
+    "strategy": {
+      "type": "Rolling"
+    },
+    "triggers": [
+      {
+        "type": "ConfigChange"
+      },
+      {
+        "type": "ImageChange",
+        "imageChangeParams": {
+          "automatic": true,
+          "containerNames": [
+            "hello2"
+          ],
+          "from": {
+            "kind": "ImageStreamTag",
+            "namespace": "hello-world",
+            "name": "hello2:latest"
+          }
+        }
+      }
+    ],
+    "replicas": 1,
+    "test": false,
+    "selector": {
+      "app": "hello2",
+      "deploymentconfig": "hello2"
+    },
+    "template": {
+      "metadata": {
+        "creationTimestamp": null,
+        "labels": {
+          "app": "hello2",
+          "deploymentconfig": "hello2"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "hello2",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {},
+            "terminationMessagePath": "/dev/termination-log",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "securityContext": {}
+      }
+    }
+  },
+  "status": {}
+}

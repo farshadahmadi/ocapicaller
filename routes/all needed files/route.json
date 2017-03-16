@@ -1,0 +1,23 @@
+{
+  "kind": "Route",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hello2",
+    "namespace": "hello-world",
+    "labels": {
+      "app": "hello2"
+    }
+  },
+  "spec": {
+    "host": null,
+    "to": {
+      "kind": "Service",
+      "name": "hello2",
+      "weight": 100
+    },
+    "port": {
+      "targetPort": "8080-tcp"
+    }
+  },
+  "status":{}
+}

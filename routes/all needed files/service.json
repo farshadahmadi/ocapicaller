@@ -1,0 +1,31 @@
+{
+  "kind": "Service",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hello2",
+    "namespace": "hello-world",
+    "labels": {
+      "app": "hello2"
+    }
+  },
+  "spec": {
+    "ports": [
+      {
+        "name": "8080-tcp",
+        "protocol": "TCP",
+        "port": 8080,
+        "targetPort": 8080
+      }
+    ],
+    "selector": {
+      "app": "hello2",
+      "deploymentconfig": "hello2"
+    },
+    "clusterIP": null,
+    "type": "ClusterIP",
+    "sessionAffinity": "None"
+  },
+  "status": {
+    "loadBalancer": {}
+  }
+}

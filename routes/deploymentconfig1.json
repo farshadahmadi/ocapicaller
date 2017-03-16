@@ -1,0 +1,114 @@
+{
+  "kind": "DeploymentConfig",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hello1",
+    "namespace": "hello-world",
+    "selfLink": "/oapi/v1/namespaces/hello-world/deploymentconfigs/hello1",
+    "uid": "3c8aaa1f-ffea-11e6-9ec7-54ab3aca8b10",
+    "resourceVersion": "7349859",
+    "generation": 2,
+    "creationTimestamp": "2017-03-03T08:20:18Z",
+    "labels": {
+      "app": "hello1"
+    },
+    "annotations": {
+      "openshift.io/generated-by": "OpenShiftNewApp"
+    }
+  },
+  "spec": {
+    "strategy": {
+      "type": "Rolling",
+      "rollingParams": {
+        "updatePeriodSeconds": 1,
+        "intervalSeconds": 1,
+        "timeoutSeconds": 600,
+        "maxUnavailable": "25%",
+        "maxSurge": "25%"
+      },
+      "resources": {}
+    },
+    "triggers": [
+      {
+        "type": "ConfigChange"
+      },
+      {
+        "type": "ImageChange",
+        "imageChangeParams": {
+          "automatic": true,
+          "containerNames": [
+            "hello1"
+          ],
+          "from": {
+            "kind": "ImageStreamTag",
+            "namespace": "hello-world",
+            "name": "hello1:latest"
+          },
+          "lastTriggeredImage": "172.30.86.144:5000/hello-world/hello1@sha256:42d9dbe72306eb2955f7c010037e42532d912f8c421cc7d7da1c5cfde91cc7bb"
+        }
+      }
+    ],
+    "replicas": 1,
+    "test": false,
+    "selector": {
+      "app": "hello1",
+      "deploymentconfig": "hello1"
+    },
+    "template": {
+      "metadata": {
+        "creationTimestamp": null,
+        "labels": {
+          "app": "hello1",
+          "deploymentconfig": "hello1"
+        },
+        "annotations": {
+          "openshift.io/container.hello1.image.entrypoint": "[\"container-entrypoint\",\"/bin/sh\",\"-c\",\"$STI_SCRIPTS_PATH/usage\"]",
+          "openshift.io/generated-by": "OpenShiftNewApp"
+        }
+      },
+      "spec": {
+        "containers": [
+          {
+            "name": "hello1",
+            "image": "172.30.86.144:5000/hello-world/hello1@sha256:42d9dbe72306eb2955f7c010037e42532d912f8c421cc7d7da1c5cfde91cc7bb",
+            "ports": [
+              {
+                "containerPort": 8080,
+                "protocol": "TCP"
+              }
+            ],
+            "resources": {},
+            "terminationMessagePath": "/dev/termination-log",
+            "imagePullPolicy": "Always"
+          }
+        ],
+        "restartPolicy": "Always",
+        "terminationGracePeriodSeconds": 30,
+        "dnsPolicy": "ClusterFirst",
+        "securityContext": {}
+      }
+    }
+  },
+  "status": {
+    "latestVersion": 1,
+    "observedGeneration": 2,
+    "replicas": 1,
+    "updatedReplicas": 1,
+    "availableReplicas": 1,
+    "details": {
+      "message": "caused by an image change",
+      "causes": [
+        {
+          "type": "ImageChange",
+          "imageTrigger": {
+            "from": {
+              "kind": "ImageStreamTag",
+              "namespace": "hello-world",
+              "name": "hello1:latest"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

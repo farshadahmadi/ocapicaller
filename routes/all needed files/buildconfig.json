@@ -1,0 +1,62 @@
+{
+  "kind": "BuildConfig",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hello2",
+    "namespace": "hello-world",
+    "labels": {
+      "app": "hello2"
+    }
+  },
+  "spec": {
+    "triggers": [
+      {
+        "type": "GitHub",
+        "github": {
+          "secret": "4321"
+        }
+      },
+      {
+        "type": "Generic",
+        "generic": {
+          "secret": "1234"
+        }
+      },
+      {
+        "type": "ConfigChange"
+      },
+      {
+        "type": "ImageChange"
+      }
+    ],
+    "runPolicy": "Serial",
+    "source": {
+      "type": "Git",
+      "git": {
+        "uri": "https://github.com/farshadahmadi/hello2.git",
+        "ref": "master"
+      }
+    },
+    "strategy": {
+      "type": "Source",
+      "sourceStrategy": {
+        "from": {
+          "kind": "ImageStreamTag",
+          "namespace": "openshift",
+          "name": "nodejs:4"
+        }
+      }
+    },
+    "output": {
+      "to": {
+        "kind": "ImageStreamTag",
+        "name": "hello2:latest"
+      }
+    },
+    "resources": {},
+    "postCommit": {}
+  },
+  "status": {
+    "lastVersion": 0
+  }
+}

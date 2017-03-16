@@ -1,0 +1,36 @@
+{
+  "kind": "ImageStream",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hello1",
+    "namespace": "hello-world",
+    "selfLink": "/oapi/v1/namespaces/hello-world/imagestreams/hello1",
+    "uid": "3c5c46d2-ffea-11e6-9ec7-54ab3aca8b10",
+    "resourceVersion": "7349801",
+    "generation": 1,
+    "creationTimestamp": "2017-03-03T08:20:18Z",
+    "labels": {
+      "app": "hello1"
+    },
+    "annotations": {
+      "openshift.io/generated-by": "OpenShiftNewApp"
+    }
+  },
+  "spec": {},
+  "status": {
+    "dockerImageRepository": "172.30.86.144:5000/hello-world/hello1",
+    "tags": [
+      {
+        "tag": "latest",
+        "items": [
+          {
+            "created": "2017-03-03T08:20:54Z",
+            "dockerImageReference": "172.30.86.144:5000/hello-world/hello1@sha256:42d9dbe72306eb2955f7c010037e42532d912f8c421cc7d7da1c5cfde91cc7bb",
+            "image": "sha256:42d9dbe72306eb2955f7c010037e42532d912f8c421cc7d7da1c5cfde91cc7bb",
+            "generation": 1
+          }
+        ]
+      }
+    ]
+  }
+}

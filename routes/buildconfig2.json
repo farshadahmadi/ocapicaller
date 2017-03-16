@@ -1,0 +1,71 @@
+{
+  "kind": "BuildConfig",
+  "apiVersion": "v1",
+  "metadata": {
+    "name": "hello1",
+    "namespace": "hello-world",
+    "selfLink": "/oapi/v1/namespaces/hello-world/buildconfigs/hello1",
+    "uid": "3c735bef-ffea-11e6-9ec7-54ab3aca8b10",
+    "resourceVersion": "7349728",
+    "creationTimestamp": "2017-03-03T08:20:18Z",
+    "labels": {
+      "app": "hello1"
+    },
+    "annotations": {
+      "openshift.io/generated-by": "OpenShiftNewApp"
+    }
+  },
+  "spec": {
+    "triggers": [
+      {
+        "type": "GitHub",
+        "github": {
+          "secret": "k1yNSxeZiriZyVWx96A0"
+        }
+      },
+      {
+        "type": "Generic",
+        "generic": {
+          "secret": "PspfTIxilijqHO4XDG1o"
+        }
+      },
+      {
+        "type": "ConfigChange"
+      },
+      {
+        "type": "ImageChange",
+        "imageChange": {
+          "lastTriggeredImageID": "registry.access.redhat.com/rhscl/nodejs-4-rhel7@sha256:7fdfc09047439b9af110112fa3d289187af6a978addcb9d0e48b018c07728310"
+        }
+      }
+    ],
+    "runPolicy": "Serial",
+    "source": {
+      "type": "Git",
+      "git": {
+        "uri": "https://github.com/farshadahmadi/hello1.git"
+      }
+    },
+    "strategy": {
+      "type": "Source",
+      "sourceStrategy": {
+        "from": {
+          "kind": "ImageStreamTag",
+          "namespace": "openshift",
+          "name": "nodejs:4"
+        }
+      }
+    },
+    "output": {
+      "to": {
+        "kind": "ImageStreamTag",
+        "name": "hello1:latest"
+      }
+    },
+    "resources": {},
+    "postCommit": {}
+  },
+  "status": {
+    "lastVersion": 1
+  }
+}
