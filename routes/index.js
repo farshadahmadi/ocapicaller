@@ -22,14 +22,18 @@ router.get('/namespaces/hello-world/createnewapp', function(req, res, next) {
 
   var vars = {
     project:{
-      name: "runtime-environment",
+      name: "runtime-environment-1",
       git: {
         url: "https://github.com/farshadahmadi/liquidiot-server.git",
         ref: "oc-singleprocess"
       }
     },
     device: {
-      url:null
+      url:null,
+      location:{
+        x: 100,
+        y: 400
+      }
     }
   };
 

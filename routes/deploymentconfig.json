@@ -59,6 +59,18 @@
             {
               "name": "DEVICE_URL",
               "value": "<%= device.url %>"
+            },
+            {
+              "name": "DEVICE_NAME",
+              "value": "<%= project.name %>"
+            },
+            {
+              "name": "DEVICE_LOCATION_X",
+              "value": "<%= device.location.x %>"
+            },
+            {
+              "name": "DEVICE_LOCATION_Y",
+              "value": "<%= device.location.y %>"
             }
             ],
             "resources": {},
